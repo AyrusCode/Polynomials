@@ -1,0 +1,11 @@
+﻿  lab1_polynomial.cpp
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(97): warning C4018: '<': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(112): warning C4018: '>': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(132): warning C4018: '>': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(147): warning C4018: '<': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(200): warning C4018: '>=': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.h(215): warning C4018: '<': signed/unsigned mismatch
+c:\users\harri\desktop\bme 1b\bme 122- data structures and algorithms\labs\lab1 good\lab1_polynomial\lab1_polynomial\lab1_polynomial.cpp(299): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  lab1_polynomial.vcxproj -> C:\Users\harri\Desktop\BME 1B\BME 122- Data Structures and Algorithms\Labs\Lab1 Good\lab1_polynomial\Debug\lab1_polynomial.exe
