@@ -25,9 +25,13 @@
 using namespace std;
 
 class Polynomial {
+	// Using vector implementation of Polynomial class
 	vector<int> data;
+	vector<int> negative_polynomial; // stores least negative exponents first
+
 
 public:
+	// Generation of a random Polynomial that can be no bigger than 1001 terms and no smaller than 1 term
 	Polynomial() {
 		
 		data.resize(rand() % 1001);
@@ -41,14 +45,14 @@ public:
 
 	}
 
+	// Parameterized Polynomial Constructor that takes an integer array and array size
 	Polynomial(int A[], int size) {
-	 
-		//
 
 		if ((size < 0 )) {
 			int i1[] = {0};
 			Polynomial(i1, 0);
 		}
+
 		else {
 			data.resize(size);
 
@@ -59,6 +63,7 @@ public:
 		
 	}
 
+	// File input constructor
 	Polynomial(string fileName) {
 		ifstream poly_stream;
 		
@@ -71,27 +76,43 @@ public:
 
 		int value = 0;
 
-		for (int i = 0;i < size; i++) {
+		for (int i = 0; i < size; i++) {
 			poly_stream >> value;
 			data[i] = value;
 		}
+
+		try {
+			poly_stream >> value;
+			negative_polynomial.push_back(data[0]);
+			for (int i = 0; i < data.size() - 1; i++) {
+				data[i] = data[i + 1];
+			}
+			data[data.size() - 1] = value;
+		}
+		catch(...){
+			poly_stream.close();
+		}
 	
 
-		poly_stream.close();
+		
 	}
 
+	// Method that returns value at particular index of polynomial
 	int val_at_index(int index) {
 		return data[index];
 	}
 
+	// Method that returns size of polynomial when called
 	int vector_size() {
 		return data.size();
 	}
 
+	// Deconstructor
 	~Polynomial() {
 		data.erase(data.begin(), data.end());
 	}
 
+	// Compares to see if two polynomials are equal
 	bool operator==(const Polynomial& target) {
 		if (data.size() != target.data.size()) return false;
 		for (int i = 0; i < data.size(); ++i) {
@@ -100,6 +121,7 @@ public:
 		return true;
 	}
 
+	// Adds two polynomials
 	Polynomial operator+(const Polynomial& target) {
 		int max_size = max(data.size(), target.data.size());
 		int min_size = min(data.size(), target.data.size());
@@ -119,8 +141,7 @@ public:
 		return new_poly;
 	}
 
-	// make one that auto sets it to 0.
-	// maybe combine + and - into one.
+	// Subtracts polynomials
 	Polynomial operator-(const Polynomial& target) {
 		int max_size = max(data.size(), target.data.size());
 		int min_size = min(data.size(), target.data.size());
@@ -137,6 +158,7 @@ public:
 		return new_poly;
 	}
 
+	// Multiplies two polynomials
 	Polynomial operator*(const Polynomial& target) {
 		int new_size = data.size() + target.data.size() - 1;
 
@@ -156,17 +178,20 @@ public:
 		return new_poly;
 	}
 
+	// Derivative method
 	Polynomial derivative() {
+		// Creates an an array of size n-1 where n is the polynomial size
 		int new_size = data.size() - 1;
 		int* array = new int[new_size];
 
-
+		// If the size is equal to 1, returns a polynomial of size 1 and value 0 (since the derivative of a constant is 0)
 		if (data.size() == 1) {
 			int i1[] = { 0 };
 			Polynomial der_poly(i1, 0);
 			return der_poly;
 		}
-
+		
+		// Else, computes the derivative using drop-down rule of exponents (x^n => n * x^n-1)
 		else {
 			for (int i = 0; i < new_size; i++) {
 				array[i] = data[i + 1] * (i + 1);
@@ -176,8 +201,7 @@ public:
 		}
 	}
 
-	// check for things like zero length polynomial?
-
+	// Print method
 	void print() {
 		for (int i = data.size() - 1; i >= 0; i--)
 		{
@@ -190,10 +214,14 @@ public:
 				}
 				else cout << "(" << data[i] << ")" << "x^" << i;
 			}
+			
 		}
+		
 		cout << endl;
 	}
 
+
+	// Prints the first 5 terms of the polynomial, used to print and test randomly generated polynomials for "randomness"
 	void trunc_print() {
 		if (data.size() <= 5) print();
 		else {
@@ -210,6 +238,7 @@ public:
 		}
 	}
 
+	// Custom method to resize a polynomial where all values are zero and size is polynomial size >1 to a single-term zero polynomial
 	void zero_poly() {
 		bool all_zero = true;
 		for (int i = 0; i < data.size(); i++) {
@@ -221,13 +250,11 @@ public:
 		}
 	}
 	
-
+	// Creating friend class that will be able to use methods of Polynomial class (for testing)
 	friend class PolynomialTest;
 
 };
 
 
-
-// TODO: add headers that you want to pre-compile here
 
 #endif 
